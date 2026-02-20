@@ -1,0 +1,67 @@
+{
+  "plugins": [
+    {
+      "name": "manim-Astronomy",
+      "renderer": "opengl",
+      "triggers": ["orbit", "planet", "star", "solar system", "black hole", "spacetime", "gravity", "Kepler", "ellipse", "astronomy", "celestial"],
+      "imports": "from manim_Astronomy.stellar_objects import Planet, Star",
+      "config": "config.renderer = \"opengl\""
+    },
+    {
+      "name": "manim-eng",
+      "renderer": "cairo",
+      "triggers": ["circuit", "resistor", "capacitor", "voltage", "current", "Ohm", "Kirchhoff", "electronics"],
+      "imports": "from manim_eng import *"
+    },
+    {
+      "name": "ManimML",
+      "renderer": "opengl",
+      "triggers": ["neural network", "CNN", "layer", "neuron", "activation", "dropout", "convolution", "machine learning", "deep learning"],
+      "imports": "from manim_ml.neural_network import NeuralNetwork, FeedForwardLayer, Convolutional2DLayer"
+    },
+    {
+      "name": "manim-physics",
+      "renderer": "cairo",
+      "triggers": ["wave", "optics", "lens", "mirror", "electromagnetism", "mechanics", "collision", "physics"],
+      "imports": "from manim_physics import *"
+    },
+    {
+      "name": "manim-stock-visualization",
+      "renderer": "cairo",
+      "triggers": ["stock", "portfolio", "price", "market", "chart", "finance", "yfinance"],
+      "imports": "from manim_stock.visualization import Lineplot, GrowingLineplot"
+    },
+    {
+      "name": "manim-timeline",
+      "renderer": "cairo",
+      "triggers": ["timeline", "literature", "publication", "history", "chronology"],
+      "imports": "manim_timeline classes"
+    },
+    {
+      "name": "manim-CAD_Drawing_Utils",
+      "renderer": "cairo",
+      "triggers": ["dimension", "chamfer", "rounded corner", "technical drawing", "blueprint", "CAD"],
+      "imports": "from manim_cad_drawing_utils import Round_Corners, Linear_Dimension"
+    },
+    {
+      "name": "manim-meshes",
+      "renderer": "opengl",
+      "triggers": ["mesh", "triangulation", "Delaunay", "Voronoi", "3D mesh"],
+      "imports": "from manim_meshes import *",
+      "config": "config.renderer = \"opengl\""
+    },
+    {
+      "name": "manim-voiceover-plus",
+      "renderer": "cairo",
+      "triggers": ["voiceover", "narration", "spoken", "audio", "explain aloud"],
+      "imports": "from manim_voiceover_plus import VoiceoverScene"
+    },
+    {
+      "name": "manim-lamination-builder",
+      "renderer": "cairo",
+      "triggers": ["lamination", "Julia set", "complex dynamics"],
+      "imports": "from manim_lamination_builder import parse_lamination, Main"
+    }
+  ],
+  "default_renderer": "cairo"
+}

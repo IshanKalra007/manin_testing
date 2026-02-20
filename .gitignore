@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Manim
+media/
+*.mp4
+*.png
+*.gif
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local plugin clones
+manim-astronomy-local/
+manim-eng-local/
+manim-meshes-local/
+
+# Env
+.env
+.env.local
