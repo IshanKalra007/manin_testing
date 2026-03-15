@@ -3,3 +3,14 @@ uvicorn[standard]>=0.24.0
 pydantic>=2.0.0
 manim>=0.18.0
 boto3>=1.28.0
+
+# Manim plugins
+manim-physics
+manim-eng
+manim-CAD_Drawing_Utils
+manim-ml
+manim-stock-visualization
+manim-timeline
+manim-lamination-builder
+manim-meshes
+manim-voiceover-plus

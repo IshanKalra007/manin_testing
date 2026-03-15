@@ -1,20 +1,41 @@
-# Base: Official Manim image (includes ffmpeg, cairo, pango, etc.)
 FROM manimcommunity/manim:stable
 
-# Install Python API dependencies
-RUN pip install --no-cache-dir \
-    fastapi>=0.104.0 \
-    uvicorn[standard]>=0.24.0 \
-    pydantic>=2.0.0 \
-    boto3>=1.28.0
+USER root
 
-# Copy renderer app
+# System deps for OpenGL headless rendering (3D scenes) and fonts
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    xvfb \
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    libegl1-mesa \
+    libgles2-mesa \
+    mesa-utils \
+    fonts-noto \
+    fonts-noto-cjk \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python API dependencies
+RUN pip install --no-cache-dir \
+    fastapi \
+    "uvicorn[standard]" \
+    pydantic \
+    boto3
+
+# Manim plugins — each in its own layer for faster rebuilds
+RUN pip install --no-cache-dir manim-physics manim-eng
+RUN pip install --no-cache-dir manim-CAD_Drawing_Utils manim-ml
+RUN pip install --no-cache-dir manim-stock-visualization manim-timeline
+RUN pip install --no-cache-dir manim-lamination-builder manim-meshes
+RUN pip install --no-cache-dir manim-voiceover-plus || true
+
 WORKDIR /app
 COPY app.py .
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 
-# Manim writes to ./media by default; we'll use /tmp for renders
 ENV PYTHONUNBUFFERED=1
+ENV DISPLAY=:99
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["./entrypoint.sh"]

@@ -5,3 +5,7 @@ __pycache__
 venv
 *.md
 .git
+.gitignore
+media/
+test_render.py
+bucket-policy.json
